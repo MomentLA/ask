@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>tab切换</title>
+    <script src="jquery-2.0.3.js"></script>
+    <style>
+        .all {width:1000px;margin:10px auto;text-align: center;}
+        #box {border:1px solid #000;}
+        ul {list-style: none;margin:0;padding:0;}
+        #tab {height:30px;line-height: 30px;background-color: black;}
+        #tab li {float:left;color:#fff;padding:0 10px;}
+        .current {background-color: #ccc;}
+        #content ul {padding:10px 0;display: none;line-height: 30px;}
+    </style>
+
+</head>
+<body>
+<div class="all">
+    <div id="box">
+        <ul id="tab">
+            <li class="current">第一课</li>
+            <li>第二课</li>
+            <li>第三课</li>
+            <div style="clear: both"></div>
+        </ul>
+        <div id="content">
+            <ul style="display: block">
+                <li>列表1</li>
+            </ul>
+            <ul>
+                <li>列表2</li>
+            </ul>
+            <ul>
+                <li>列表3</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
+<script>
+    $(function(){
+        $('#tab li').each(function(index){
+            $(this).hover(function(){
+                $('#tab li').each(function(){
+                    $('#tab li').removeClass('current');
+                })
+                $(this).addClass('current');
+                $('#content ul').each(function(index){
+                    $('#content ul').eq(index).hide();
+                });
+                $('#content ul').eq(index).show();
+            })
+        })
+    })
+
+
+</script>
